@@ -12,12 +12,7 @@ from pyspark.sql import functions as F
 
 spark = SparkSession.builder.appName("customer_churn").getOrCreate()
 
-df = (
-    spark.read
-    .option("header", True)
-    .option("inferSchema", True)
-    .csv("/content/drive/MyDrive/Customer_Churn_Data.csv")
-)
+df = spark.read.csv("Customer_Churn_Data.csv", header=True, inferSchema=True)
 
 type(df)
 

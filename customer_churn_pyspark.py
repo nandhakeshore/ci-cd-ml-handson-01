@@ -12,9 +12,6 @@ from pyspark.sql import functions as F
 
 spark = SparkSession.builder.appName("customer_churn").getOrCreate()
 
-from google.colab import drive
-drive.mount('/content/drive')
-
 df = (
     spark.read
     .option("header", True)

@@ -1,14 +1,17 @@
-name: First CI Pipeline
+name: ML CI Pipeline
 
 on: [push]
 
 jobs:
-  run-code:
+  churn-model:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
-    - name: Print message
-      run: echo "CI/CD is working!"
+    - name: Install dependencies
+      run: pip install pandas pyspark scikit-learn
+
+    - name: Run churn model
+      run: python customer_churn_pyspark.py
